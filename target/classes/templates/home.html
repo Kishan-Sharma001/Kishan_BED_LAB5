@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>HomePage -EMS</title>
+
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	rel="stylesheet"
+	>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div>
+					<!-- As a heading -->
+					<nav class="navbar navbar-light bg-light">
+						<span class="navbar-brand mb-0 h1">Employee Management
+							System</span>
+					</nav>
+					<!-- As a link -->
+					<h4>List of Employees</h4>
+					<a  th:href="@{/employee/register}"  type="button" class="btn btn-primary">Add
+							Employee</a>
+					<div>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+								
+									<th scope="col">First Name</th>
+									<th scope="col">Last name</th>
+									<th scope="col">Email</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="emp:${EmployeeList}">
+									<td th:text="${emp.f_name}"></td>
+									<td th:text="${emp.l_name}"></td>
+									<td th:text="${emp.email}"></td>
+									<td>
+										<a th:href="@{/employee/update/id(id=${emp.id})}" type="button" class="btn btn-primary">Update</a>
+										<a th:href="@{/employee/delete/id(id=${emp.id})}" type="button" class="btn btn-danger">Delete</a>
+										
+										
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>
